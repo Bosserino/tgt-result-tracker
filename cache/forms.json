@@ -1,0 +1,102 @@
+{
+ "1018|Archaludon": {
+  "fallback": 1018,
+  "id": 1018,
+  "slug": "archaludon"
+ },
+ "149|Dragonite": {
+  "fallback": 149,
+  "id": 149,
+  "slug": "dragonite"
+ },
+ "186|Politoed": {
+  "fallback": 186,
+  "id": 186,
+  "slug": "politoed"
+ },
+ "257|Blaziken": {
+  "fallback": 257,
+  "id": 257,
+  "slug": "blaziken"
+ },
+ "260|Swampert": {
+  "fallback": 260,
+  "id": 260,
+  "slug": "swampert"
+ },
+ "26|Raichu": {
+  "fallback": 26,
+  "id": 26,
+  "slug": "raichu"
+ },
+ "279|Pelipper": {
+  "fallback": 279,
+  "id": 279,
+  "slug": "pelipper"
+ },
+ "445|Garchomp": {
+  "fallback": 445,
+  "id": 445,
+  "slug": "garchomp"
+ },
+ "478|Froslass": {
+  "fallback": 478,
+  "id": 478,
+  "slug": "froslass"
+ },
+ "637|Volcarona": {
+  "fallback": 637,
+  "id": 637,
+  "slug": "volcarona"
+ },
+ "670|Floette [Eternal Flower]": {
+  "fallback": 670,
+  "id": 10061,
+  "slug": "floette-eternal"
+ },
+ "6|Charizard": {
+  "fallback": 6,
+  "id": 6,
+  "slug": "charizard"
+ },
+ "727|Incineroar": {
+  "fallback": 727,
+  "id": 727,
+  "slug": "incineroar"
+ },
+ "768|Golisopod": {
+  "fallback": 768,
+  "id": 768,
+  "slug": "golisopod"
+ },
+ "812|Rillaboom": {
+  "fallback": 812,
+  "id": 812,
+  "slug": "rillaboom"
+ },
+ "861|Grimmsnarl": {
+  "fallback": 861,
+  "id": 861,
+  "slug": "grimmsnarl"
+ },
+ "902|Basculegion [Male]": {
+  "fallback": 902,
+  "id": 902,
+  "slug": "basculegion-male"
+ },
+ "903|Sneasler": {
+  "fallback": 903,
+  "id": 903,
+  "slug": "sneasler"
+ },
+ "981|Farigiraf": {
+  "fallback": 981,
+  "id": 981,
+  "slug": "farigiraf"
+ },
+ "983|Kingambit": {
+  "fallback": 983,
+  "id": 983,
+  "slug": "kingambit"
+ }
+}

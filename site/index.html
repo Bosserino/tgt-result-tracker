@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TGT Result Tracker</title>
+<meta name="description" content="Risultati VGC del team TGT ai Regional e International, con team e sprite di Pokémon Champions.">
+<style>
+  :root {
+    --bg: #f4f5f8;
+    --surface: #ffffff;
+    --surface-2: #eef0f5;
+    --text: #161a23;
+    --muted: #636b7d;
+    --border: #dfe2ea;
+    --accent: #d8342c;
+    --accent-ink: #ffffff;
+    --good: #1f8a4c;
+    --good-bg: #e2f4e9;
+    --gold: #a86b00;
+    --gold-bg: #fff1d1;
+    --shadow: 0 1px 2px rgba(20, 24, 35, .06), 0 4px 16px rgba(20, 24, 35, .05);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0f1218;
+      --surface: #181c25;
+      --surface-2: #212634;
+      --text: #eceef3;
+      --muted: #9aa2b4;
+      --border: #2a3040;
+      --accent: #ff5a4f;
+      --accent-ink: #160605;
+      --good: #5fd48f;
+      --good-bg: #173226;
+      --gold: #ffc45c;
+      --gold-bg: #3a2c10;
+      --shadow: none;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font: 15px/1.45 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 32px 16px 64px; }
+  header.top { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 12px; margin-bottom: 28px; }
+  h1 { margin: 0; font-size: 28px; letter-spacing: -.02em; }
+  h1 span { color: var(--accent); }
+  .sub { color: var(--muted); margin-top: 4px; }
+  .stamp { color: var(--muted); font-size: 13px; }
+
+  section.event { margin-bottom: 40px; }
+  .event-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 14px; margin-bottom: 14px; }
+  .event-head h2 { margin: 0; font-size: 20px; letter-spacing: -.01em; }
+  .event-head h2 a { color: inherit; text-decoration: none; }
+  .event-head h2 a:hover { text-decoration: underline; }
+  .event-meta { color: var(--muted); font-size: 14px; }
+  .live { color: var(--accent); font-weight: 600; }
+
+  .grid { display: grid; gap: 14px; grid-template-columns: 1fr; }
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 16px; box-shadow: var(--shadow); }
+  .card-head { display: flex; align-items: center; gap: 14px; }
+  .place { font-size: 30px; font-weight: 800; letter-spacing: -.03em; min-width: 64px; font-variant-numeric: tabular-nums; }
+  .who { flex: 1; min-width: 0; }
+  .who .name { font-weight: 650; font-size: 16px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
+  .tag { font-size: 12px; font-weight: 600; padding: 2px 8px; border-radius: 999px; background: var(--surface-2); color: var(--muted); }
+  .tag.record { color: var(--text); font-variant-numeric: tabular-nums; }
+  .tag.top { background: var(--good-bg); color: var(--good); }
+  .tag.champ { background: var(--gold-bg); color: var(--gold); }
+
+  .team { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+  .mon {
+    display: flex; flex-direction: column; align-items: center; width: 144px; margin: 0;
+    background: var(--surface-2); border-radius: 10px; padding: 8px 8px 8px;
+  }
+  /* Native 128x128, never rescaled: right-click "Copia immagine" / drag gives the original PNG */
+  .mon img { display: block; width: 128px; height: 128px; max-width: none; }
+  .mon .label { font-size: 12px; color: var(--muted); text-align: center; line-height: 1.2; width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-top: 4px; }
+  .mon .actions { display: flex; gap: 4px; width: 100%; margin-top: 6px; }
+  .mon .actions > * {
+    flex: 1; display: inline-flex; align-items: center; justify-content: center; gap: 4px;
+    font: inherit; font-size: 12px; font-weight: 600; cursor: pointer; text-decoration: none;
+    background: var(--surface); color: var(--text); border: 1px solid var(--border);
+    border-radius: 7px; padding: 4px 0;
+  }
+  .mon .actions > *:hover { border-color: var(--accent); color: var(--accent); }
+  .mon .actions .done { border-color: var(--good); color: var(--good); }
+  .mon .actions svg { width: 12px; height: 12px; }
+  .no-team { margin-top: 14px; color: var(--muted); font-size: 13px; }
+
+  .card-foot { display: flex; justify-content: flex-end; margin-top: 10px; }
+  button.all {
+    font: inherit; font-size: 13px; font-weight: 600; cursor: pointer;
+    background: transparent; color: var(--accent); border: 1px solid var(--border);
+    border-radius: 8px; padding: 5px 10px;
+  }
+  button.all:hover { border-color: var(--accent); }
+
+  .empty, .error { color: var(--muted); padding: 48px 0; text-align: center; }
+  footer { margin-top: 48px; color: var(--muted); font-size: 12px; }
+  footer a { color: inherit; }
+
+  @media (max-width: 420px) {
+    .place { font-size: 26px; min-width: 54px; }
+    .team { justify-content: center; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div>
+      <h1>TGT <span>Result Tracker</span></h1>
+      <div class="sub">Risultati VGC Masters ai Regional, International e Worlds · da Danzica 2027 in poi</div>
+    </div>
+    <div class="stamp" id="stamp"></div>
+  </header>
+  <main id="events"><div class="empty">Caricamento…</div></main>
+  <footer>
+    Dati da <a href="https://www.pokedata.ovh/standings2/" target="_blank" rel="noopener">Pokedata</a>,
+    sprite del menù di Pokémon Champions da <a href="https://github.com/PokeAPI/sprites" target="_blank" rel="noopener">PokeAPI</a>.
+    Classifiche non ufficiali. Pagina aggiornata automaticamente.
+  </footer>
+</div>
+
+<script>
+const REFRESH_MS = 5 * 60 * 1000;
+let lastUpdated = null;
+
+const DL_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v12M6 11l6 6 6-6M5 20h14"/></svg>';
+const COPY_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>';
+
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+
+function flag(code) {
+  if (!code || !/^[A-Z]{2}$/.test(code)) return "";
+  return String.fromCodePoint(...[...code].map(c => 0x1F1E6 + c.charCodeAt(0) - 65)) + " ";
+}
+
+function displayName(name) {
+  return name.replace(/\s*\[(.*)\]/, (_, form) => {
+    const short = form.replace(/ Form$/, "").replace(/ Rotom$/, "");
+    return ` (${short})`;
+  });
+}
+
+function fileName(player, mon, i) {
+  const slug = s => s.normalize("NFKD").replace(/[̀-ͯ]/g, "").replace(/[^A-Za-z0-9]+/g, "-").replace(/^-|-$/g, "").toLowerCase();
+  return `${slug(player)}-${i + 1}-${slug(mon.name)}.png`;
+}
+
+function card(r) {
+  const tags = [`<span class="tag record">${esc(r.record)}</span>`];
+  const big = r.place <= 2 || /Top (2|4|8)$/.test(r.top);
+  tags.push(`<span class="tag ${r.place === 1 ? "champ" : r.topcut || big ? "top" : ""}">${esc(r.top)}</span>`);
+  if (r.topcut) tags.push('<span class="tag top">Top cut</span>');
+  else if (r.day2) tags.push('<span class="tag">Day 2</span>');
+
+  const mons = r.team.filter(m => m.sprite);
+  const team = mons.length
+    ? `<div class="team">${mons.map((m, i) => `
+        <figure class="mon">
+          <img src="${esc(m.sprite)}" alt="${esc(displayName(m.name))}" width="128" height="128"
+               title="${esc(displayName(m.name))}${m.item ? " @ " + esc(m.item) : ""}">
+          <figcaption class="label">${esc(displayName(m.name))}</figcaption>
+          <div class="actions">
+            <button type="button" class="copy" data-src="${esc(m.sprite)}">${COPY_ICON}Copia</button>
+            <a class="dl" href="${esc(m.sprite)}" download="${esc(fileName(r.name, m, i))}">${DL_ICON}PNG</a>
+          </div>
+        </figure>`).join("")}</div>
+       <div class="card-foot"><button class="all" type="button">Scarica tutti e ${mons.length}</button></div>`
+    : '<div class="no-team">Team list non ancora pubblicata</div>';
+
+  return `<article class="card">
+    <div class="card-head">
+      <div class="place">${r.place}°</div>
+      <div class="who">
+        <div class="name">${flag(r.country)}${esc(r.name)}</div>
+        <div class="tags">${tags.join("")}</div>
+      </div>
+    </div>
+    ${team}
+  </article>`;
+}
+
+function render(data) {
+  const root = document.getElementById("events");
+  if (!data.events.length) {
+    root.innerHTML = '<div class="empty">Nessun risultato ancora disponibile.</div>';
+    return;
+  }
+  root.innerHTML = data.events.map(e => `
+    <section class="event">
+      <div class="event-head">
+        <h2><a href="${esc(e.url)}" target="_blank" rel="noopener">${esc(e.title.replace(/^\d{4}\s+/, "").replace(/ Pokémon VGC/, ""))}</a></h2>
+        <span class="event-meta">${esc(e.date)} · ${e.entrants} Masters${e.complete ? "" : ' · <span class="live">in corso</span>'}</span>
+      </div>
+      <div class="grid">${e.results.map(card).join("")}</div>
+    </section>`).join("");
+
+  root.querySelectorAll("button.all").forEach(btn => btn.addEventListener("click", () => {
+    btn.closest(".card").querySelectorAll("a.dl").forEach((a, i) => setTimeout(() => a.click(), i * 250));
+  }));
+  root.querySelectorAll("button.copy").forEach(btn => btn.addEventListener("click", () => copySprite(btn)));
+
+  const when = new Date(data.updated);
+  document.getElementById("stamp").textContent =
+    "Ultimo aggiornamento: " + when.toLocaleString("it-IT", { dateStyle: "medium", timeStyle: "short" });
+}
+
+// Puts the original PNG bytes on the clipboard (Safari needs the promise form inside the click)
+async function copySprite(btn) {
+  const label = btn.innerHTML;
+  const flash = (text, ok) => {
+    btn.textContent = text;
+    btn.classList.toggle("done", ok);
+    setTimeout(() => { btn.innerHTML = label; btn.classList.remove("done"); }, 1500);
+  };
+  try {
+    const blob = fetch(btn.dataset.src).then(res => res.blob());
+    await navigator.clipboard.write([new ClipboardItem({ "image/png": blob })]);
+    flash("Copiato ✓", true);
+  } catch (err) {
+    flash("Usa tasto destro", false);
+  }
+}
+
+async function load() {
+  try {
+    const res = await fetch("data.json?t=" + Date.now(), { cache: "no-store" });
+    const data = await res.json();
+    if (data.updated !== lastUpdated) {
+      lastUpdated = data.updated;
+      render(data);
+    }
+  } catch (err) {
+    if (!lastUpdated) document.getElementById("events").innerHTML = '<div class="error">Impossibile caricare i dati.</div>';
+  }
+}
+
+load();
+setInterval(load, REFRESH_MS);
+</script>
+</body>
+</html>

@@ -1,0 +1,393 @@
+{
+ "updated": "2026-11-03T17:13:49+00:00",
+ "events": [
+  {
+   "id": "1000080",
+   "title": "2027 Gdansk Pokémon VGC Regional Championships",
+   "date": "October 31-November 1, 2026",
+   "start": "2026-10-31",
+   "kind": "Regional",
+   "complete": true,
+   "entrants": 758,
+   "url": "https://www.pokedata.ovh/standings2/1000080/Masters",
+   "results": [
+    {
+     "name": "Alessandro Bugari",
+     "country": "IT",
+     "place": 35,
+     "record": "9-3",
+     "top": "Top 64",
+     "day2": true,
+     "topcut": false,
+     "team": [
+      {
+       "name": "Golisopod",
+       "item": "Golisopite",
+       "ability": "Emergency Exit",
+       "sprite": "sprites/golisopod.png"
+      },
+      {
+       "name": "Farigiraf",
+       "item": "Sitrus Berry",
+       "ability": "Armor Tail",
+       "sprite": "sprites/farigiraf.png"
+      },
+      {
+       "name": "Politoed",
+       "item": "Life Orb",
+       "ability": "Drizzle",
+       "sprite": "sprites/politoed.png"
+      },
+      {
+       "name": "Sneasler",
+       "item": "White Herb",
+       "ability": "Unburden",
+       "sprite": "sprites/sneasler.png"
+      },
+      {
+       "name": "Archaludon",
+       "item": "Leftovers",
+       "ability": "Stamina",
+       "sprite": "sprites/archaludon.png"
+      },
+      {
+       "name": "Garchomp",
+       "item": "Garchompite Z",
+       "ability": "Rough Skin",
+       "sprite": "sprites/garchomp.png"
+      }
+     ]
+    },
+    {
+     "name": "Federico Masu",
+     "country": "IT",
+     "place": 36,
+     "record": "9-3",
+     "top": "Top 64",
+     "day2": true,
+     "topcut": false,
+     "team": [
+      {
+       "name": "Grimmsnarl",
+       "item": "Light Clay",
+       "ability": "Prankster",
+       "sprite": "sprites/grimmsnarl.png"
+      },
+      {
+       "name": "Farigiraf",
+       "item": "Sitrus Berry",
+       "ability": "Armor Tail",
+       "sprite": "sprites/farigiraf.png"
+      },
+      {
+       "name": "Golisopod",
+       "item": "Golisopite",
+       "ability": "Emergency Exit",
+       "sprite": "sprites/golisopod.png"
+      },
+      {
+       "name": "Charizard",
+       "item": "Charizardite Y",
+       "ability": "Blaze",
+       "sprite": "sprites/charizard.png"
+      },
+      {
+       "name": "Archaludon",
+       "item": "Leftovers",
+       "ability": "Stamina",
+       "sprite": "sprites/archaludon.png"
+      },
+      {
+       "name": "Politoed",
+       "item": "Mystic Water",
+       "ability": "Drizzle",
+       "sprite": "sprites/politoed.png"
+      }
+     ]
+    },
+    {
+     "name": "Nicolò Venturin",
+     "country": "IT",
+     "place": 58,
+     "record": "8-4",
+     "top": "Top 64",
+     "day2": true,
+     "topcut": false,
+     "team": [
+      {
+       "name": "Kingambit",
+       "item": "Life Orb",
+       "ability": "Defiant",
+       "sprite": "sprites/kingambit.png"
+      },
+      {
+       "name": "Sneasler",
+       "item": "White Herb",
+       "ability": "Unburden",
+       "sprite": "sprites/sneasler.png"
+      },
+      {
+       "name": "Rillaboom",
+       "item": "Occa Berry",
+       "ability": "Grassy Surge",
+       "sprite": "sprites/rillaboom.png"
+      },
+      {
+       "name": "Basculegion [Male]",
+       "item": "Choice Scarf",
+       "ability": "Adaptability",
+       "sprite": "sprites/basculegion-male.png"
+      },
+      {
+       "name": "Froslass",
+       "item": "Froslassite",
+       "ability": "Cursed Body",
+       "sprite": "sprites/froslass.png"
+      },
+      {
+       "name": "Blaziken",
+       "item": "Blazikenite",
+       "ability": "Speed Boost",
+       "sprite": "sprites/blaziken.png"
+      }
+     ]
+    },
+    {
+     "name": "Stefano De Maria",
+     "country": "IT",
+     "place": 69,
+     "record": "8-4",
+     "top": "Top 128",
+     "day2": true,
+     "topcut": false,
+     "team": [
+      {
+       "name": "Charizard",
+       "item": "Charizardite Y",
+       "ability": "Blaze",
+       "sprite": "sprites/charizard.png"
+      },
+      {
+       "name": "Grimmsnarl",
+       "item": "Light Clay",
+       "ability": "Prankster",
+       "sprite": "sprites/grimmsnarl.png"
+      },
+      {
+       "name": "Politoed",
+       "item": "Mystic Water",
+       "ability": "Drizzle",
+       "sprite": "sprites/politoed.png"
+      },
+      {
+       "name": "Golisopod",
+       "item": "Golisopite",
+       "ability": "Emergency Exit",
+       "sprite": "sprites/golisopod.png"
+      },
+      {
+       "name": "Archaludon",
+       "item": "Leftovers",
+       "ability": "Stamina",
+       "sprite": "sprites/archaludon.png"
+      },
+      {
+       "name": "Farigiraf",
+       "item": "Sitrus Berry",
+       "ability": "Armor Tail",
+       "sprite": "sprites/farigiraf.png"
+      }
+     ]
+    },
+    {
+     "name": "Francesco Magurno",
+     "country": "IT",
+     "place": 91,
+     "record": "7-5",
+     "top": "Top 128",
+     "day2": true,
+     "topcut": false,
+     "team": [
+      {
+       "name": "Swampert",
+       "item": "Swampertite",
+       "ability": "Torrent",
+       "sprite": "sprites/swampert.png"
+      },
+      {
+       "name": "Grimmsnarl",
+       "item": "Light Clay",
+       "ability": "Prankster",
+       "sprite": "sprites/grimmsnarl.png"
+      },
+      {
+       "name": "Farigiraf",
+       "item": "Sitrus Berry",
+       "ability": "Armor Tail",
+       "sprite": "sprites/farigiraf.png"
+      },
+      {
+       "name": "Pelipper",
+       "item": "Focus Sash",
+       "ability": "Drizzle",
+       "sprite": "sprites/pelipper.png"
+      },
+      {
+       "name": "Golisopod",
+       "item": "Golisopite",
+       "ability": "Emergency Exit",
+       "sprite": "sprites/golisopod.png"
+      },
+      {
+       "name": "Archaludon",
+       "item": "Leftovers",
+       "ability": "Stamina",
+       "sprite": "sprites/archaludon.png"
+      }
+     ]
+    },
+    {
+     "name": "Alessandro Settimi",
+     "country": "IT",
+     "place": 168,
+     "record": "5-3",
+     "top": "Top 256",
+     "day2": false,
+     "topcut": false,
+     "team": [
+      {
+       "name": "Sneasler",
+       "item": "White Herb",
+       "ability": "Unburden",
+       "sprite": "sprites/sneasler.png"
+      },
+      {
+       "name": "Incineroar",
+       "item": "Sitrus Berry",
+       "ability": "Intimidate",
+       "sprite": "sprites/incineroar.png"
+      },
+      {
+       "name": "Basculegion [Male]",
+       "item": "Choice Scarf",
+       "ability": "Adaptability",
+       "sprite": "sprites/basculegion-male.png"
+      },
+      {
+       "name": "Dragonite",
+       "item": "Dragoninite",
+       "ability": "Inner Focus",
+       "sprite": "sprites/dragonite.png"
+      },
+      {
+       "name": "Rillaboom",
+       "item": "Miracle Seed",
+       "ability": "Grassy Surge",
+       "sprite": "sprites/rillaboom.png"
+      },
+      {
+       "name": "Floette [Eternal Flower]",
+       "item": "Floettite",
+       "ability": "Flower Veil",
+       "sprite": "sprites/floette-eternal.png"
+      }
+     ]
+    },
+    {
+     "name": "Andrea Stefanczyk",
+     "country": "IT",
+     "place": 220,
+     "record": "5-3",
+     "top": "Top 256",
+     "day2": false,
+     "topcut": false,
+     "team": [
+      {
+       "name": "Golisopod",
+       "item": "Golisopite",
+       "ability": "Emergency Exit",
+       "sprite": "sprites/golisopod.png"
+      },
+      {
+       "name": "Grimmsnarl",
+       "item": "Light Clay",
+       "ability": "Prankster",
+       "sprite": "sprites/grimmsnarl.png"
+      },
+      {
+       "name": "Archaludon",
+       "item": "Leftovers",
+       "ability": "Stamina",
+       "sprite": "sprites/archaludon.png"
+      },
+      {
+       "name": "Charizard",
+       "item": "Charizardite Y",
+       "ability": "Blaze",
+       "sprite": "sprites/charizard.png"
+      },
+      {
+       "name": "Politoed",
+       "item": "Mystic Water",
+       "ability": "Drizzle",
+       "sprite": "sprites/politoed.png"
+      },
+      {
+       "name": "Farigiraf",
+       "item": "Sitrus Berry",
+       "ability": "Armor Tail",
+       "sprite": "sprites/farigiraf.png"
+      }
+     ]
+    },
+    {
+     "name": "Antonio Boccia",
+     "country": "IT",
+     "place": 318,
+     "record": "4-4",
+     "top": "Top 512",
+     "day2": false,
+     "topcut": false,
+     "team": [
+      {
+       "name": "Basculegion [Male]",
+       "item": "Choice Scarf",
+       "ability": "Adaptability",
+       "sprite": "sprites/basculegion-male.png"
+      },
+      {
+       "name": "Garchomp",
+       "item": "Garchompite Z",
+       "ability": "Rough Skin",
+       "sprite": "sprites/garchomp.png"
+      },
+      {
+       "name": "Rillaboom",
+       "item": "Life Orb",
+       "ability": "Grassy Surge",
+       "sprite": "sprites/rillaboom.png"
+      },
+      {
+       "name": "Raichu",
+       "item": "Raichunite Y",
+       "ability": "Lightning Rod",
+       "sprite": "sprites/raichu.png"
+      },
+      {
+       "name": "Volcarona",
+       "item": "Grassy Seed",
+       "ability": "Flame Body",
+       "sprite": "sprites/volcarona.png"
+      },
+      {
+       "name": "Incineroar",
+       "item": "Sitrus Berry",
+       "ability": "Intimidate",
+       "sprite": "sprites/incineroar.png"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}
