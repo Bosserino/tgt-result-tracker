@@ -52,12 +52,21 @@
   .sub { color: var(--muted); margin-top: 4px; }
   .stamp { color: var(--muted); font-size: 13px; }
 
-  section.event { margin-bottom: 40px; }
-  .event-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 14px; margin-bottom: 14px; }
+  details.event { margin-bottom: 12px; border-bottom: 1px solid var(--border); padding-bottom: 12px; }
+  details.event[open] { padding-bottom: 28px; }
+  .event-head { display: flex; align-items: flex-start; gap: 12px; cursor: pointer; list-style: none; padding: 6px 0; }
+  .event-head::-webkit-details-marker { display: none; }
+  .chev { flex: none; width: 22px; height: 22px; margin-top: 2px; color: var(--muted); transition: transform .15s; }
+  details[open] > .event-head .chev { transform: rotate(90deg); }
+  .event-head:hover .chev { color: var(--accent); }
+  .event-text { flex: 1; min-width: 0; display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 14px; }
   .event-head h2 { margin: 0; font-size: 20px; letter-spacing: -.01em; }
-  .event-head h2 a { color: inherit; text-decoration: none; }
-  .event-head h2 a:hover { text-decoration: underline; }
   .event-meta { color: var(--muted); font-size: 14px; }
+  .event-meta a { color: inherit; }
+  .event-best { flex-basis: 100%; font-size: 14px; color: var(--muted); }
+  .event-best b { color: var(--text); font-weight: 600; }
+  details[open] .event-best { display: none; }
+  details.event > .grid { margin-top: 10px; }
   .live { color: var(--accent); font-weight: 600; }
 
   .grid { display: grid; gap: 14px; grid-template-columns: 1fr; }
@@ -130,6 +139,7 @@
 <script>
 const REFRESH_MS = 5 * 60 * 1000;
 let lastUpdated = null;
+const openEvents = new Map();
 
 const DL_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v12M6 11l6 6 6-6M5 20h14"/></svg>';
 const COPY_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>';
@@ -193,14 +203,26 @@ function render(data) {
     root.innerHTML = '<div class="empty">Nessun risultato ancora disponibile.</div>';
     return;
   }
-  root.innerHTML = data.events.map(e => `
-    <section class="event">
-      <div class="event-head">
-        <h2><a href="${esc(e.url)}" target="_blank" rel="noopener">${esc(e.title.replace(/^\d{4}\s+/, "").replace(/ Pokémon VGC/, ""))}</a></h2>
-        <span class="event-meta">${esc(e.date)} · ${e.entrants} Masters${e.complete ? "" : ' · <span class="live">in corso</span>'}</span>
-      </div>
+  // Newest event open by default; whatever the viewer toggled survives the auto-refresh
+  root.innerHTML = data.events.map((e, i) => {
+    const open = openEvents.has(e.id) ? openEvents.get(e.id) : i === 0;
+    const best = e.results[0];
+    const players = e.results.length === 1 ? "1 giocatore TGT" : `${e.results.length} giocatori TGT`;
+    return `
+    <details class="event" data-id="${esc(e.id)}"${open ? " open" : ""}>
+      <summary class="event-head">
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+        <div class="event-text">
+          <h2>${esc(e.title.replace(/^\d{4}\s+/, "").replace(/ Pokémon VGC/, ""))}</h2>
+          <span class="event-meta">${esc(e.date)} · ${e.entrants} Masters · ${players}${e.complete ? "" : ' · <span class="live">in corso</span>'} · <a href="${esc(e.url)}" target="_blank" rel="noopener">Pokedata ↗</a></span>
+          <span class="event-best">Miglior risultato: <b>${esc(best.name)}</b> ${esc(best.record)} · ${best.place}° · ${esc(best.top)}</span>
+        </div>
+      </summary>
       <div class="grid">${e.results.map(card).join("")}</div>
-    </section>`).join("");
+    </details>`;
+  }).join("");
+
+  root.querySelectorAll("details.event").forEach(d => d.addEventListener("toggle", () => openEvents.set(d.dataset.id, d.open)));
 
   root.querySelectorAll("button.all").forEach(btn => btn.addEventListener("click", () => {
     btn.closest(".card").querySelectorAll("a.dl").forEach((a, i) => setTimeout(() => a.click(), i * 250));
